@@ -8,8 +8,6 @@ app.use(express.static("public"));
 
 const eldenRingWeps = [
     {
-        "Weapons": [
-            {
                 "StrengthWeapons": [
                     {
                         "name": "Greatsword",
@@ -146,14 +144,10 @@ const eldenRingWeps = [
                     } 
                 ]
             }
-        ]
-    }
 ];
 
 const eldenRingTalismans = [
     {
-        "Talismans": [
-            {
                 "StrengthTalismans": [
                     {
                         "name": "Erdtree’s Favor",
@@ -240,14 +234,11 @@ const eldenRingTalismans = [
                     }
                 ]
             }
-        ]
-    }
 ];
 
 const eldenRingLocations = [
     {
-        "Locations": [
-            {
+
                 "StrengthLocations": [
                     {
                         "name": "Greatsword",
@@ -334,8 +325,6 @@ const eldenRingLocations = [
                     }
                 ]
             }
-        ]
-    }
 ];
 
 app.get('/', (req, res) => {
