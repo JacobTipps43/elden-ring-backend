@@ -9,27 +9,27 @@ app.use(express.static("public"));
 const strengthWeapons = [
     {
         "name": "Greatsword",
-        "img": "images/weapons/Greatsword.png",
+        "img": "images/Weapons/Greatsword.png",
         "description": "The Greatsword in Elden Ring is a massive, heavy weapon, dealing devastating damage with wide swings. When paired with the Lion’s Claw Ash of War, it becomes even more powerful, allowing for a fierce, leaping attack that crushes enemies with overwhelming force."
     },
     {
         "name": "Grafted Blade Greatsword",
-        "img": "images/weapons/Grafted.png",
+        "img": "images/Weapons/Grafted.png",
         "description": "The Grafted Blade Greatsword is a colossal sword forged from countless smaller blades, symbolizing power through conquest."
     },
     {
         "name": "Prelate's Inferno Crozier",
-        "img": "images/weapons/Prelates.png",
+        "img": "images/Weapons/Prelates.png",
         "description": "The Prelate's Inferno Crozier is a colossal, flame-scorched hammer, delivering devastating fiery blows."
     },
     {
         "name": "Greatsword Of Solitude",
-        "img": "images/weapons/Solitude.png",
+        "img": "images/Weapons/Solitude.png",
         "description": "The Greatsword of Solitude is a massive, somber blade, dealing heavy, slow strikes."
     },
     {
         "name": "Rusted Anchor",
-        "img": "images/weapons/Anchor.png",
+        "img": "images/Weapons/Anchor.png",
         "description": "The Rusted Anchor is a heavy weapon, delivering powerful, sweeping strikes."
     }
 ]
@@ -37,27 +37,27 @@ const strengthWeapons = [
 const dexterityWeapons = [
     {
         "name": "Uchigatana",
-        "img": "images/weapons/Uchigatana.png",
+        "img": "images/Weapons/Uchigatana.png",
         "description": "The Uchigatana is a sleek katana, known for its quick strikes and impressive bleed buildup."
     },
     {
         "name": "Nagakiba",
-        "img": "images/weapons/Nagakiba.png",
+        "img": "images/Weapons/Nagakiba.png",
         "description": "The Nagakiba is a long, elegant katana with extended reach."
     },
     {
         "name": "The Dancing Blade of Ranah",
-        "img": "images/weapons/Rahan.png",
+        "img": "images/Weapons/Rahan.png",
         "description": "The Dancing Blade of Ranah is an elegant sword, delivering fluid, graceful attacks."
     },
     {
         "name": "Hand of Malenia",
-        "img": "images/weapons/HandMalenia.png",
+        "img": "images/Weapons/HandMalenia.png",
         "description": "The Hand of Malenia is a graceful, curved blade designed for swift, precise attacks."
     },
     {
         "name": "Rivers of Blood",
-        "img": "images/weapons/Rivers.png",
+        "img": "images/Weapons/Rivers.png",
         "description": "The Rivers of Blood is a deadly katana, known for its exceptional bleed buildup."
     }
 ]
@@ -65,27 +65,27 @@ const dexterityWeapons = [
 const mageWeapons = [
     {
         "name": "Dark Moon Greatsword",
-        "img": "images/weapons/DarkMoon.png",
+        "img": "images/Weapons/DarkMoon.png",
         "description": "The Dark Moon Greatsword is a powerful, elegant weapon, known for its magical prowess."
     },
     {
         "name": "Fallingstar Beast Jaw",
-        "img": "images/weapons/FallingStar.png",
+        "img": "images/Weapons/FallingStar.png",
         "description": "The Fallingstar Beast Jaw is a massive, monstrous weapon crafted from the jaw of a fallen Star Beast."
     },
     {
         "name": "Azur's Glintstone Staff",
-        "img": "images/weapons/Azur_Staff.png",
+        "img": "images/Weapons/Azur_Staff.png",
         "description": "Azur's Glintstone Staff is a powerful catalyst, known for its high sorcery scaling."
     },
     {
         "name": "Rotten Crystal Sword",
-        "img": "images/weapons/RottenSword.png",
+        "img": "images/Weapons/RottenSword.png",
         "description": "The Rotten Crystal Sword is a unique weapon that combines beauty and decay."
     },
     {
         "name": "Scepter Of The All-Knowing",
-        "img": "images/weapons/AllKnowing.png",
+        "img": "images/Weapons/AllKnowing.png",
         "description": "The Scepter of the All-Knowing is a powerful staff, embodying the essence of wisdom and arcane knowledge."
     }
 ]
@@ -93,27 +93,27 @@ const mageWeapons = [
 const arcaneWeapons = [
     {
         "name": "Rivers Of Blood",
-        "img": "images/weapons/Rivers.png",
+        "img": "images/Weapons/Rivers.png",
         "description": "The Rivers of Blood is a deadly katana, known for its exceptional bleed buildup."
     },
     {
         "name": "Serpent Bow",
-        "img": "images/weapons/SerpentBow.png",
+        "img": "images/Weapons/SerpentBow.png",
         "description": "The Serpent Bow is a sleek, elegant bow, known for its rapid-fire capabilities."
     },
     {
         "name": "Morgott's Cursed Sword",
-        "img": "images/weapons/MorgotsSword.png",
+        "img": "images/Weapons/MorgotsSword.png",
         "description": "Morgott's Cursed Sword is a fearsome weapon, characterized by its imposing design."
     },
     {
         "name": "Mohgwyn's Sacred Spear",
-        "img": "images/weapons/Sacred_Spear.png",
+        "img": "images/Weapons/Sacred_Spear.png",
         "description": "Mohgwyn's Sacred Spear is a powerful weapon, featuring a striking design that reflects its dark heritage."
     },
     {
         "name": "Bloody Helice",
-        "img": "images/weapons/Helice.png",
+        "img": "images/Weapons/Helice.png",
         "description": "Bloody Helice is a unique weapon, known for its swift, graceful attacks and distinctive design."
     }
 ]
@@ -121,27 +121,27 @@ const arcaneWeapons = [
 const faithWeapons = [
     {
         "name": "Blasphemous Blade",
-        "img": "images/weapons/Blasphemous_Blade.png",
+        "img": "images/Weapons/Blasphemous_Blade.png",
         "description": "Considered the best weapon in the entire game, the Blasphemous Blade is a powerful weapon with a striking design."
     },
     {
         "name": "Godslayer's Greatsword",
-        "img": "images/weapons/Godslayer_Greatsword.png",
+        "img": "images/Weapons/Godslayer_Greatsword.png",
         "description": "The Godslayer's Greatsword is an imposing weapon that exudes dark elegance."
     },
     {
         "name": "Winged Scythe",
-        "img": "images/weapons/Winged_Scythe.png",
+        "img": "images/Weapons/Winged_Scythe.png",
         "description": "The Winged Scythe is a striking weapon with a unique design that combines elegance and lethality."
     },
     {
         "name": "Maliketh's Black Blade",
-        "img": "images/weapons/Maliketh_Black_Blade.png",
+        "img": "images/Weapons/Maliketh_Black_Blade.png",
         "description": "Maliketh's Black Blade is a formidable weapon that embodies dark elegance and lethal precision."
     },
     {
         "name": "Sacred Relic Sword",
-        "img": "images/weapons/Sacred_Relic_Sword.png",
+        "img": "images/Weapons/Sacred_Relic_Sword.png",
         "description": "The Sacred Relic Sword is a majestic weapon that exudes divine power."
     }
 ]
@@ -239,7 +239,7 @@ const faithTalismans = [
 const strengthLocations =[
     {
         "name": "Greatsword",
-        "img": "images/weapons/Greatsword.png",
+        "img": "images/Weapons/Greatsword.png",
         "description": "Located inside a coffin carriage chest on the western side of the Caelid Region."
     },
     {
@@ -257,7 +257,7 @@ const strengthLocations =[
 const dexterityLocations =[
     {
         "name": "Rivers of Blood",
-        "img": "images/weapons/Rivers.png",
+        "img": "images/Weapons/Rivers.png",
         "description": "Found exclusively in the hands of the invading NPC boss, Bloody Finger Okina."
     },
     {
@@ -275,7 +275,7 @@ const dexterityLocations =[
 const mageLocations =[
     {
         "name": "Azur's Glintstone Staff",
-        "img": "images/weapons/Azur_Staff.png",
+        "img": "images/Weapons/Azur_Staff.png",
         "description": "Located in the Academy of Raya Lucaria, on the second floor of the Church of the Cuckoo."
     },
     {
@@ -293,7 +293,7 @@ const mageLocations =[
 const arcaneLocations =[
     {
         "name": "Mohgwyn's Sacred Spear",
-        "img": "images/weapons/Sacred_Spear.png",
+        "img": "images/Weapons/Sacred_Spear.png",
         "description": "Exchanged from Finger Reader Enia for the Remembrance of the Blood Lord."
     },
     {
@@ -311,7 +311,7 @@ const arcaneLocations =[
 const faithLocations =[
     {
         "name": "Blasphemous Blade",
-        "img": "images/weapons/Blasphemous_Blade.png",
+        "img": "images/Weapons/Blasphemous_Blade.png",
         "description": "Exchanged with Finger Reader Enia after defeating the Shardbearer Boss, Rykard."
     },
     {
