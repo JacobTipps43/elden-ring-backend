@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.static("public"));
 
-const weapons = {
+const weapons = [
     "strengthWeapons": [
         {
             "name": "Greatsword",
@@ -142,9 +142,9 @@ const weapons = {
             "description": "The Sacred Relic Sword is a majestic weapon that exudes divine power."
         }
     ]
-};
+];
 
-const talismans = {
+const talismans = [
     "strengthTalismans": [
         {
             "name": "Erdtree’s Favor",
@@ -230,9 +230,9 @@ const talismans = {
             "description": "Radagon's Soreseal boosts multiple stats by +5, though it increases damage taken by 15%."
         }
     ]
-};
+];
 
-const locations = {
+const locations = [
     "strengthLocations": [
         {
             "name": "Greatsword",
@@ -318,7 +318,7 @@ const locations = {
             "description": "Found at Fort Faroth in Caelid's Dragonbarrow region."
         }
     ]
-};
+];
 
 app.get('/api/Weps', (req, res) => {
     res.json(weapons);
