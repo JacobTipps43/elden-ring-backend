@@ -440,7 +440,6 @@ const handleChange = (req, res) => {
 
     const item = {
         name: req.body.name,
-        img: req.body.img,
         description: req.body.description
     };
 
