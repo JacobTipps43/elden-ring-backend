@@ -1,10 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const app = express();
-
+const Joi = require('joi');
 app.use(cors());
 app.use(express.static("public"));
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "./public/images/");
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    },
+  });
+
+const upload = multer({ storage: storage });
 
 const strengthWeapons = [
     {
@@ -415,6 +426,45 @@ app.get('/api/locations', (req, res) => {
         <p>Faith Locations: <a href="/api/locations/faithLocations">Faith Locations</a></p>
         `);
 });
+
+const handleChange = (req, res) => {
+    console.log("Handling the request");
+
+    const results = validateItem(req.body);
+
+    if (results.error) {
+        res.status(400).send(results.error.details[0].message);
+        console.log("I have an error")
+        return;
+    }
+
+    const item = {
+        name: req.body.name,
+        img: req.body.img,
+        description: req.body.description
+    };
+
+    if (req.file){
+        item.main_img = req.file.filename;
+    }
+};
+
+app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
+    handleChange(req, res);
+    strengthWeapons.push(item);
+});
+
+
+
+const validateItem = (item) => {
+    const schema = Joi.object({
+        name: Joi.string().min(3).required(),
+        img: Joi.string().min(3).required(),
+        description: Joi.string().min(3).required()
+    });
+
+    return schema.validate(item);
+}
 
 app.listen(3001, () => {
     console.log("Server is running on port 3001");
