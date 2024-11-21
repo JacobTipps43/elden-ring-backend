@@ -447,6 +447,8 @@ const handleChange = (req, res) => {
     if (req.file){
         item.main_img = req.file.filename;
     }
+
+    return item;
 };
 
 app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
