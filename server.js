@@ -456,13 +456,10 @@ app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
     strengthWeapons.push(item);
 });
 
-
-
 const validateItem = (item) => {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
-        img: Joi.string().min(3).required(),
-        description: Joi.string().min(3).required()
+        description: Joi.number().required()
     });
 
     return schema.validate(item);
