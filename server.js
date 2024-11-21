@@ -448,12 +448,12 @@ const handleChange = (req, res) => {
         item.main_img = req.file.filename;
     }
 
-    return item;
+    console.log(item);
+    res.status(200).send(item);
 };
 
 app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
     handleChange(req, res);
-    console.log(item);
     strengthWeapons.push(item);
 });
 
