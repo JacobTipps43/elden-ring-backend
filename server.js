@@ -453,6 +453,7 @@ const handleChange = (req, res) => {
 
 app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
     handleChange(req, res);
+    console.log(item);
     strengthWeapons.push(item);
 });
 
