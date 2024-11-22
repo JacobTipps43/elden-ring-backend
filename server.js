@@ -20,27 +20,27 @@ const upload = multer({ storage: storage });
 const strengthWeapons = [
     {
         "name": "Greatsword",
-        "img": "Greatsword.png",
+        "img": "images/Weapons/Greatsword.png",
         "description": "The Greatsword in Elden Ring is a massive, heavy weapon, dealing devastating damage with wide swings. When paired with the Lion’s Claw Ash of War, it becomes even more powerful, allowing for a fierce, leaping attack that crushes enemies with overwhelming force."
     },
     {
         "name": "Grafted Blade Greatsword",
-        "img": "Grafted.png",
+        "img": "images/Weapons/Grafted.png",
         "description": "The Grafted Blade Greatsword is a colossal sword forged from countless smaller blades, symbolizing power through conquest."
     },
     {
         "name": "Prelate's Inferno Crozier",
-        "img": "Prelates.png",
+        "img": "images/Weapons/Prelates.png",
         "description": "The Prelate's Inferno Crozier is a colossal, flame-scorched hammer, delivering devastating fiery blows."
     },
     {
         "name": "Greatsword Of Solitude",
-        "img": "Solitude.png",
+        "img": "images/Weapons/Solitude.png",
         "description": "The Greatsword of Solitude is a massive, somber blade, dealing heavy, slow strikes."
     },
     {
         "name": "Rusted Anchor",
-        "img": "Anchor.png",
+        "img": "images/Weapons/Anchor.png",
         "description": "The Rusted Anchor is a heavy weapon, delivering powerful, sweeping strikes."
     }
 ]
