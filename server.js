@@ -8,7 +8,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "./public/images/");
+      cb(null, "./public/images/Weapons");
     },
     filename: (req, file, cb) => {
       cb(null, file.originalname);
@@ -435,7 +435,8 @@ const handleChange = (req, res) => {
     if (results.error) {
         res.status(400).send(results.error.details[0].message);
         console.log("I have an error")
-        return;
+        console.log(results.error);
+        return false;
     }
 
     const item = {
@@ -444,22 +445,24 @@ const handleChange = (req, res) => {
     };
 
     if (req.file){
-        item.main_img = req.file.filename;
+        item.img = "images/Weapons/"+req.file.filename;
     }
 
     console.log(item);
     res.status(200).send(item);
+    return true;
 };
 
 app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
-    handleChange(req, res);
-    strengthWeapons.push(item);
+    if(handleChange(req, res)){
+        strengthWeapons.push(req.body);
+    }
 });
 
 const validateItem = (item) => {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
-        description: Joi.number().required()
+        description: Joi.string().required()
     });
 
     return schema.validate(item);
