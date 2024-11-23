@@ -429,35 +429,33 @@ app.get('/api/locations', (req, res) => {
 
 const handleChange = (req, res) => {
     console.log("Handling the request");
-
+  
     const results = validateItem(req.body);
-
+  
     if (results.error) {
-        res.status(400).send(results.error.details[0].message);
-        console.log("I have an error")
-        console.log(results.error);
-        return false;
+      res.status(400).send(results.error.details[0].message);
+      console.log("I have an error");
+      console.log(results.error);
+      return;
     }
-
+  
     const item = {
-        name: req.body.name,
-        description: req.body.description
+      name: req.body.name,
+      description: req.body.description,
     };
-
-    if (req.file){
-        item.img = "images/Weapons/"+req.file.filename;
+  
+    if (req.file) {
+      item.img = "images/Weapons/" + req.file.filename;
     }
-
+  
     console.log(item);
+    strengthWeapons.push(item);
     res.status(200).send(item);
-    return true;
-};
-
-app.post('/api/Wepons/strengthWeapons', upload.single('img'), (req, res) => {
-    if(handleChange(req, res)){
-        strengthWeapons.push(req.body);
-    }
-});
+  };
+  
+  app.post("/api/Wepons/strengthWeapons", upload.single("img"), (req, res) => {
+    handleChange(req, res);
+  });
 
 const validateItem = (item) => {
     const schema = Joi.object({
