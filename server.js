@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.static("public"));
 const multer = require('multer');
 
-const storage = multer.diskStorage({
+const storageWeps = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, "./public/images/Weapons");
     },
@@ -15,7 +15,18 @@ const storage = multer.diskStorage({
     },
   });
 
-const upload = multer({ storage: storage });
+const uploadWeps = multer({ storage: storageWeps });
+
+const storageTali = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./public/images/talismans");
+        },
+        filename: (req, file, cb) => {
+        cb(null, file.originalname);
+        }
+});
+
+const uploadTalis = multer({ storage: storageTali });
 
 const strengthWeapons = [
     {
@@ -501,43 +512,43 @@ const handleWepChange = (req, res, weaponType) => {
     res.status(200).send(item);
   }
   
-  app.post("/api/Wepons/strengthWeapons", upload.single("img"), (req, res) => {
+  app.post("/api/Wepons/strengthWeapons", uploadWeps.single("img"), (req, res) => {
     handleWepChange(req, res, "strength");
   });
 
-    app.post("/api/Wepons/dexterityWeapons", upload.single("img"), (req, res) => {
+    app.post("/api/Wepons/dexterityWeapons", uploadWeps.single("img"), (req, res) => {
         handleWepChange(req, res, "dexterity");
     });
 
-    app.post("/api/Wepons/mageWeapons", upload.single("img"), (req, res) => {
+    app.post("/api/Wepons/mageWeapons", uploadWeps.single("img"), (req, res) => {
         handleWepChange(req, res, "mage");
     });
 
-    app.post("/api/Wepons/arcaneWeapons", upload.single("img"), (req, res) => {
+    app.post("/api/Wepons/arcaneWeapons", uploadWeps.single("img"), (req, res) => {
         handleWepChange(req, res, "arcane");
     });
 
-    app.post("/api/Wepons/faithWeapons", upload.single("img"), (req, res) => {
+    app.post("/api/Wepons/faithWeapons", uploadWeps.single("img"), (req, res) => {
         handleWepChange(req, res, "faith");
     });
 
-    app.post("/api/talismans/strengthTalismans", upload.single("img"), (req, res) => {
+    app.post("/api/talismans/strengthTalismans", uploadTalis.single("img"), (req, res) => {
         handleTalismanChange(req, res, "strength");
     });
 
-    app.post("/api/talismans/dexterityTalismans", upload.single("img"), (req, res) => {
+    app.post("/api/talismans/dexterityTalismans", uploadTalis.single("img"), (req, res) => {
         handleTalismanChange(req, res, "dexterity");
     });
 
-    app.post("/api/talismans/mageTalismans", upload.single("img"), (req, res) => {
+    app.post("/api/talismans/mageTalismans", uploadTalis.single("img"), (req, res) => {
         handleTalismanChange(req, res, "mage");
     });
 
-    app.post("/api/talismans/arcaneTalismans", upload.single("img"), (req, res) => {
+    app.post("/api/talismans/arcaneTalismans", uploadTalis.single("img"), (req, res) => {
         handleTalismanChange(req, res, "arcane");
     });
 
-    app.post("/api/talismans/faithTalismans", upload.single("img"), (req, res) => {
+    app.post("/api/talismans/faithTalismans", uploadTalis.single("img"), (req, res) => {
         handleTalismanChange(req, res, "faith");
     });
 
