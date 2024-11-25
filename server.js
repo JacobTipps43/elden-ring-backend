@@ -449,16 +449,16 @@ const handleChange = (req, res) => {
     }
   
     console.log(item);
+    strengthWeapons.push(item);
+    dexterityWeapons.push(item);
     res.status(200).send(item);
   };
   
   app.post("/api/Wepons/strengthWeapons", upload.single("img"), (req, res) => {
-    strengthWeapons.push(item);
     handleChange(req, res);
   });
 
     app.post("/api/Wepons/dexterityWeapons", upload.single("img"), (req, res) => {
-        dexterityWeapons.push(item);
         handleChange(req, res);
     });
 
