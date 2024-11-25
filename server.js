@@ -457,6 +457,22 @@ const handleChange = (req, res) => {
     handleChange(req, res);
   });
 
+    app.post("/api/Wepons/dexterityWeapons", upload.single("img"), (req, res) => {
+        handleChange(req, res);
+    });
+
+    app.post("/api/Wepons/mageWeapons", upload.single("img"), (req, res) => {
+        handleChange(req, res);
+    });
+
+    app.post("/api/Wepons/arcaneWeapons", upload.single("img"), (req, res) => {
+        handleChange(req, res);
+    });
+
+    app.post("/api/Wepons/faithWeapons", upload.single("img"), (req, res) => {
+        handleChange(req, res);
+    });
+
 const validateItem = (item) => {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
