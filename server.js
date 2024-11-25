@@ -26,8 +26,6 @@ const storageTali = multer.diskStorage({
         }
 });
 
-const uploadTalis = multer({ storage: storageTali });
-
 const strengthWeapons = [
     {
         "name": "Greatsword",
