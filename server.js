@@ -447,19 +447,23 @@ const handleChange = (req, res) => {
     if (req.file) {
       item.img = "images/Weapons/" + req.file.filename;
     }
+
+    if (weaponType === "strength") {
+        strengthWeapons.push(item);
+      } else if (weaponType === "dexterity") {
+        dexterityWeapons.push(item);
+      }
   
     console.log(item);
-    strengthWeapons.push(item);
-    dexterityWeapons.push(item);
     res.status(200).send(item);
   };
   
   app.post("/api/Wepons/strengthWeapons", upload.single("img"), (req, res) => {
-    handleChange(req, res);
+    handleChange(req, res, "strength");
   });
 
     app.post("/api/Wepons/dexterityWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res);
+        handleChange(req, res, "dexterity");
     });
 
     app.post("/api/Wepons/mageWeapons", upload.single("img"), (req, res) => {
