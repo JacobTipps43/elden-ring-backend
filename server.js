@@ -427,7 +427,7 @@ app.get('/api/locations', (req, res) => {
         `);
 });
 
-const handleChange = (req, res, weaponType) => {
+const handleWepChange = (req, res, weaponType) => {
     console.log("Handling the request");
   
     const results = validateItem(req.body);
@@ -463,25 +463,82 @@ const handleChange = (req, res, weaponType) => {
     console.log(item);
     res.status(200).send(item);
   };
+
+  const handleTalismanChange = (req, res, talismanType) => {
+    console.log("Handling the request");
+  
+    const results = validateItem(req.body);
+  
+    if (results.error) {
+      res.status(400).send(results.error.details[0].message);
+      console.log("I have an error");
+      console.log(results.error);
+      return;
+    }
+  
+    const item = {
+      name: req.body.name,
+      description: req.body.description,
+    };
+  
+    if (req.file) {
+      item.img = "images/talismans/" + req.file.filename;
+    }
+
+    if (talismanType === "strength") {
+        strengthTalismans.push(item);
+      } else if (talismanType === "dexterity") {
+        dexterityTalismans.push(item);
+      } else if (talismanType === "mage") {
+        mageTalismans.push(item);
+      } else if (talismanType === "arcane") {
+        arcaneTalismans.push(item);
+      } else if (talismanType === "faith") {
+        faithTalismans.push(item);
+      }
+  
+    console.log(item);
+    res.status(200).send(item);
+  }
   
   app.post("/api/Wepons/strengthWeapons", upload.single("img"), (req, res) => {
-    handleChange(req, res, "strength");
+    handleWepChange(req, res, "strength");
   });
 
     app.post("/api/Wepons/dexterityWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res, "dexterity");
+        handleWepChange(req, res, "dexterity");
     });
 
     app.post("/api/Wepons/mageWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res, "mage");
+        handleWepChange(req, res, "mage");
     });
 
     app.post("/api/Wepons/arcaneWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res, "arcane");
+        handleWepChange(req, res, "arcane");
     });
 
     app.post("/api/Wepons/faithWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res, "faith");
+        handleWepChange(req, res, "faith");
+    });
+
+    app.post("/api/talismans/strengthTalismans", upload.single("img"), (req, res) => {
+        handleTalismanChange(req, res, "strength");
+    });
+
+    app.post("/api/talismans/dexterityTalismans", upload.single("img"), (req, res) => {
+        handleTalismanChange(req, res, "dexterity");
+    });
+
+    app.post("/api/talismans/mageTalismans", upload.single("img"), (req, res) => {
+        handleTalismanChange(req, res, "mage");
+    });
+
+    app.post("/api/talismans/arcaneTalismans", upload.single("img"), (req, res) => {
+        handleTalismanChange(req, res, "arcane");
+    });
+
+    app.post("/api/talismans/faithTalismans", upload.single("img"), (req, res) => {
+        handleTalismanChange(req, res, "faith");
     });
 
 const validateItem = (item) => {
