@@ -427,7 +427,7 @@ app.get('/api/locations', (req, res) => {
         `);
 });
 
-const handleChange = (req, res) => {
+const handleChange = (req, res, weaponType) => {
     console.log("Handling the request");
   
     const results = validateItem(req.body);
