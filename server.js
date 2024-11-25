@@ -452,6 +452,12 @@ const handleChange = (req, res, weaponType) => {
         strengthWeapons.push(item);
       } else if (weaponType === "dexterity") {
         dexterityWeapons.push(item);
+      } else if (weaponType === "mage") {
+        mageWeapons.push(item);
+      } else if (weaponType === "arcane") {
+        arcaneWeapons.push(item);
+      } else if (weaponType === "faith") {
+        faithWeapons.push(item);
       }
   
     console.log(item);
@@ -467,15 +473,15 @@ const handleChange = (req, res, weaponType) => {
     });
 
     app.post("/api/Wepons/mageWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res);
+        handleChange(req, res, "mage");
     });
 
     app.post("/api/Wepons/arcaneWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res);
+        handleChange(req, res, "arcane");
     });
 
     app.post("/api/Wepons/faithWeapons", upload.single("img"), (req, res) => {
-        handleChange(req, res);
+        handleChange(req, res, "faith");
     });
 
 const validateItem = (item) => {
