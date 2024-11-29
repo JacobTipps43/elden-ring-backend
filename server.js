@@ -506,7 +506,6 @@ const handleWepChange = (req, res, weaponType) => {
     }
   
     const item = {
-        _id: array.length + 1,
       name: req.body.name,
       description: req.body.description,
     };
@@ -543,8 +542,7 @@ const handleWepChange = (req, res, weaponType) => {
       return;
     }
   
-    const item = {
-      _id: array.length + 1,  
+    const item = { 
       name: req.body.name,
       description: req.body.description,
     };
