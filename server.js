@@ -505,57 +505,30 @@ const handleWepChange = (req, res, weaponType) => {
       return;
     }
   
-    const strengthWeps = {
-      _id: strengthWeapons.length + 1,
+    const item = {
+        _id: array.length + 1,
       name: req.body.name,
       description: req.body.description,
     };
-
-    const dexWeps = {
-        _id: dexterityWeapons.length + 1,
-        name: req.body.name,
-        description: req.body.description,
-    
-    };
-
-    const mageWeps = {
-        _id: mageWeapons.length + 1,
-        name: req.body.name,
-        description: req.body.description,
-    }
-
-    const arcaneWeps = {
-        _id: arcaneWeapons.length + 1,
-        name: req.body.name,
-        description: req.body.description,
-    }
-
-    const faithWeps = {
-        _id: faithWeapons.length + 1,
-        name: req.body.name,
-        description: req.body.description,
-    }
   
     if (req.file) {
       item.img = "images/Weapons/" + req.file.filename;
     }
 
     if (weaponType === "strength") {
-        strengthWeapons.push(strengthWeps);
-        res.status(200).send(strengthWeps);
+        strengthWeapons.push(item);
       } else if (weaponType === "dexterity") {
-        dexterityWeapons.push(dexWeps);
-        res.status(200).send(dexWeps);
+        dexterityWeapons.push(item);
       } else if (weaponType === "mage") {
-        mageWeapons.push(mageWeps);
-        res.status(200).send(mageWeps);
+        mageWeapons.push(item);
       } else if (weaponType === "arcane") {
-        arcaneWeapons.push(arcaneWeps);
-        res.status(200).send(arcaneWeps);
+        arcaneWeapons.push(item);
       } else if (weaponType === "faith") {
-        faithWeapons.push(faithWeps);
-        res.status(200).send(faithWeps);
+        faithWeapons.push(item);
       }
+  
+    console.log(item);
+    res.status(200).send(item);
   };
 
   const handleTalismanChange = (req, res, talismanType) => {
