@@ -505,9 +505,23 @@ const handleWepChange = (req, res, weaponType) => {
       return;
     }
   
+    let _id;
+    if (weaponType === "strength") {
+        _id = strengthWeapons.length + 1;
+    } else if (weaponType === "dexterity") {
+        _id = dexterityWeapons.length + 1;
+    } else if (weaponType === "mage") {
+        _id = mageWeapons.length + 1;
+    } else if (weaponType === "arcane") {
+        _id = arcaneWeapons.length + 1;
+    } else if (weaponType === "faith") {
+        _id = faithWeapons.length + 1;
+    }
+
     const item = {
-      name: req.body.name,
-      description: req.body.description,
+        _id: _id,
+        name: req.body.name,
+        description: req.body.description,
     };
   
     if (req.file) {
