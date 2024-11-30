@@ -519,7 +519,7 @@ const handleWepChange = (req, res, weaponType) => {
     }
 
     const item = {
-        _id: toString(_id),
+        _id: _id.toString(),
         name: req.body.name,
         description: req.body.description,
     };
