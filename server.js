@@ -555,8 +555,23 @@ const handleWepChange = (req, res, weaponType) => {
       console.log(results.error);
       return;
     }
+
+
+    let _id;
+    if (talismanType === "strength") {
+        _id = strengthTalismans.length + 1;
+    } else if (talismanType === "dexterity") {
+        _id = dexterityTalismans.length + 1;
+    } else if (talismanType === "mage") {
+        _id = mageTalismans.length + 1;
+    } else if (talismanType === "arcane") {
+        _id = arcaneTalismans.length + 1;
+    } else if (talismanType === "faith") {
+        _id = faithTalismans.length + 1;
+    }
   
     const item = { 
+      _id: _id.toString(),
       name: req.body.name,
       description: req.body.description,
     };
