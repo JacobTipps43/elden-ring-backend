@@ -640,31 +640,36 @@ const handleWepChange = (req, res, weaponType) => {
         const category = req.params.category;
         const type = req.params.type;
         const id = req.params.id;
+
+        console.log("Category: "+category);
+        console.log("Type: "+type);
+        console.log("ID: "+id);
+
         let item;
 
-        if(category===Wepons){
+        if(category==="Wepons"){
             if(type === "strength"){
-                const item = strengthWeapons.find(strengthWeapon => strengthWeapon._id === parseInt(id));
+                item = strengthWeapons.find(strengthWeapon => strengthWeapon._id === id);
             } else if(type === "dexterity"){
-                const item = dexterityWeapons.find(dexterityWeapon => dexterityWeapon._id === parseInt(id));
+                item = dexterityWeapons.find(dexterityWeapon => dexterityWeapon._id === id);
             } else if(type === "mage"){
-                const item = mageWeapons.find(mageWeapon => mageWeapon._id === parseInt(id));
+                item = mageWeapons.find(mageWeapon => mageWeapon._id === id);
             } else if(type === "arcane"){
-                const item = arcaneWeapons.find(arcaneWeapon => arcaneWeapon._id === parseInt(id));
+                item = arcaneWeapons.find(arcaneWeapon => arcaneWeapon._id === id);
             } else if(type === "faith"){
-                const item = faithWeapons.find(faithWeapon => faithWeapon._id === parseInt(id));
+                item = faithWeapons.find(faithWeapon => faithWeapon._id === id);
             }
         }else if(category===talismans){
             if(type === "strength"){
-                const item = strengthTalismans.find(strengthTalisman => strengthTalisman._id === parseInt(id));
+                item = strengthTalismans.find(strengthTalisman => strengthTalisman._id === parseInt(id));
             } else if(type === "dexterity"){
-                const item = dexterityTalismans.find(dexterityTalisman => dexterityTalisman._id === parseInt(id));
+                item = dexterityTalismans.find(dexterityTalisman => dexterityTalisman._id === parseInt(id));
             } else if(type === "mage"){
-                const item = mageTalismans.find(mageTalisman => mageTalisman._id === parseInt(id));
+                item = mageTalismans.find(mageTalisman => mageTalisman._id === parseInt(id));
             } else if(type === "arcane"){
-                const item = arcaneTalismans.find(arcaneTalisman => arcaneTalisman._id === parseInt(id));
+                item = arcaneTalismans.find(arcaneTalisman => arcaneTalisman._id === parseInt(id));
             } else if(type === "faith"){
-                const item = faithTalismans.find(faithTalisman => faithTalisman._id === parseInt(id));
+                item = faithTalismans.find(faithTalisman => faithTalisman._id === parseInt(id));
             }
         }
 
