@@ -649,7 +649,7 @@ const handleWepChange = (req, res, weaponType) => {
 
         if(category==="Wepons"){
             if(type === "strengthWeapons"){
-                item = strengthWeapons.find(strengthWeapon => strengthWeapon._id === id);
+                item = strengthWeapons.find(strengthWeapon => strengthWeapon._id === parseInt(id));
             } else if(type === "dexterityWeapons"){
                 item = dexterityWeapons.find(dexterityWeapon => dexterityWeapon._id === parseInt(id));
             } else if(type === "mageWeapons"){
@@ -681,8 +681,8 @@ const handleWepChange = (req, res, weaponType) => {
             return;
         }
 
-        const index = category.indexOf(item);
-        category.splice(index, 1);
+        const index = type.indexOf(item);
+        type.splice(index, 1);
         res.status(200).send(item);
     });
 
