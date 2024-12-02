@@ -30,31 +30,31 @@ const uploadTalis = multer({ storage: storageTali });
 
 const strengthWeapons = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Greatsword",
         "img": "images/Weapons/Greatsword.png",
         "description": "The Greatsword in Elden Ring is a massive, heavy weapon, dealing devastating damage with wide swings. When paired with the Lion’s Claw Ash of War, it becomes even more powerful, allowing for a fierce, leaping attack that crushes enemies with overwhelming force."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Grafted Blade Greatsword",
         "img": "images/Weapons/Grafted.png",
         "description": "The Grafted Blade Greatsword is a colossal sword forged from countless smaller blades, symbolizing power through conquest."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Prelate's Inferno Crozier",
         "img": "images/Weapons/Prelates.png",
         "description": "The Prelate's Inferno Crozier is a colossal, flame-scorched hammer, delivering devastating fiery blows."
     },
     {
-        "_id" : "4",
+        "_id" : 4,
         "name": "Greatsword Of Solitude",
         "img": "images/Weapons/Solitude.png",
         "description": "The Greatsword of Solitude is a massive, somber blade, dealing heavy, slow strikes."
     },
     {
-        "_id" : "5",
+        "_id" : 5,
         "name": "Rusted Anchor",
         "img": "images/Weapons/Anchor.png",
         "description": "The Rusted Anchor is a heavy weapon, delivering powerful, sweeping strikes."
@@ -63,31 +63,31 @@ const strengthWeapons = [
 
 const dexterityWeapons = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Uchigatana",
         "img": "images/Weapons/Uchigatana.png",
         "description": "The Uchigatana is a sleek katana, known for its quick strikes and impressive bleed buildup."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Nagakiba",
         "img": "images/Weapons/Nagakiba.png",
         "description": "The Nagakiba is a long, elegant katana with extended reach."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "The Dancing Blade of Ranah",
         "img": "images/Weapons/Rahan.png",
         "description": "The Dancing Blade of Ranah is an elegant sword, delivering fluid, graceful attacks."
     },
     {
-        "_id" : "4",
+        "_id" : 4,
         "name": "Hand of Malenia",
         "img": "images/Weapons/HandMalenia.png",
         "description": "The Hand of Malenia is a graceful, curved blade designed for swift, precise attacks."
     },
     {
-        "_id" : "5",
+        "_id" : 5,
         "name": "Rivers of Blood",
         "img": "images/Weapons/Rivers.png",
         "description": "The Rivers of Blood is a deadly katana, known for its exceptional bleed buildup."
@@ -96,31 +96,31 @@ const dexterityWeapons = [
 
 const mageWeapons = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Dark Moon Greatsword",
         "img": "images/Weapons/DarkMoon.png",
         "description": "The Dark Moon Greatsword is a powerful, elegant weapon, known for its magical prowess."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Fallingstar Beast Jaw",
         "img": "images/Weapons/FallingStar.png",
         "description": "The Fallingstar Beast Jaw is a massive, monstrous weapon crafted from the jaw of a fallen Star Beast."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Azur's Glintstone Staff",
         "img": "images/Weapons/Azur_Staff.png",
         "description": "Azur's Glintstone Staff is a powerful catalyst, known for its high sorcery scaling."
     },
     {
-        "_id" : "4",
+        "_id" : 4,
         "name": "Rotten Crystal Sword",
         "img": "images/Weapons/RottenSword.png",
         "description": "The Rotten Crystal Sword is a unique weapon that combines beauty and decay."
     },
     {
-        "_id" : "5",
+        "_id" : 5,
         "name": "Scepter Of The All-Knowing",
         "img": "images/Weapons/AllKnowing.png",
         "description": "The Scepter of the All-Knowing is a powerful staff, embodying the essence of wisdom and arcane knowledge."
@@ -129,31 +129,31 @@ const mageWeapons = [
 
 const arcaneWeapons = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Rivers Of Blood",
         "img": "images/Weapons/Rivers.png",
         "description": "The Rivers of Blood is a deadly katana, known for its exceptional bleed buildup."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Serpent Bow",
         "img": "images/Weapons/SerpentBow.png",
         "description": "The Serpent Bow is a sleek, elegant bow, known for its rapid-fire capabilities."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Morgott's Cursed Sword",
         "img": "images/Weapons/MorgotsSword.png",
         "description": "Morgott's Cursed Sword is a fearsome weapon, characterized by its imposing design."
     },
     {
-        "_id" : "4",
+        "_id" : 4,
         "name": "Mohgwyn's Sacred Spear",
         "img": "images/Weapons/Sacred_Spear.png",
         "description": "Mohgwyn's Sacred Spear is a powerful weapon, featuring a striking design that reflects its dark heritage."
     },
     {
-        "_id" : "5",
+        "_id" : 5,
         "name": "Bloody Helice",
         "img": "images/Weapons/Helice.png",
         "description": "Bloody Helice is a unique weapon, known for its swift, graceful attacks and distinctive design."
@@ -162,31 +162,31 @@ const arcaneWeapons = [
 
 const faithWeapons = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Blasphemous Blade",
         "img": "images/Weapons/Blasphemous_Blade.png",
         "description": "Considered the best weapon in the entire game, the Blasphemous Blade is a powerful weapon with a striking design."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Godslayer's Greatsword",
         "img": "images/Weapons/Godslayer_Greatsword.png",
         "description": "The Godslayer's Greatsword is an imposing weapon that exudes dark elegance."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Winged Scythe",
         "img": "images/Weapons/Winged_Scythe.png",
         "description": "The Winged Scythe is a striking weapon with a unique design that combines elegance and lethality."
     },
     {
-        "_id" : "4",
+        "_id" : 4,
         "name": "Maliketh's Black Blade",
         "img": "images/Weapons/Maliketh_Black_Blade.png",
         "description": "Maliketh's Black Blade is a formidable weapon that embodies dark elegance and lethal precision."
     },
     {
-        "_id" : "5",
+        "_id" : 5,
         "name": "Sacred Relic Sword",
         "img": "images/Weapons/Sacred_Relic_Sword.png",
         "description": "The Sacred Relic Sword is a majestic weapon that exudes divine power."
@@ -195,19 +195,19 @@ const faithWeapons = [
 
 const strengthTalismans = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Erdtree’s Favor",
         "img": "images/talismans/Erdtree_Favor.png",
         "description": "Erdtree’s Favor is not only favored by Bleed players in Elden Ring."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Great-Jar’s Arsenal",
         "img": "images/talismans/Great-Jar_Arsenal.png",
         "description": "Equipment load is a crucial factor in building a strength character."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Claw Talisman",
         "img": "images/talismans/Claw_Talisman.png",
         "description": "Using jump attacks with your strength weapon is the most effective way to maximize damage."
@@ -216,19 +216,19 @@ const strengthTalismans = [
 
 const dexterityTalismans = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Prosthesis-Wearer Heirloom",
         "img": "images/talismans/Prosthesis-Wearer_Heirloom.png",
         "description": "The Prosthesis-Wearer Heirloom is a valuable talisman in Elden Ring that enhances dexterity by 5 levels."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Twinblade Talisman",
         "img": "images/talismans/Twinblade_Talisman.png",
         "description": "The Twinblade Talisman belongs to the same series as the Claw Talisman."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Millicent's Prosthesis",
         "img": "images/talismans/Millicents_Prosthesis.png",
         "description": "Millicent's Prosthesis talisman offers an effect similar to the Rotten Winged Sword Insignia."
@@ -237,19 +237,19 @@ const dexterityTalismans = [
 
 const mageTalismans = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Godfrey Icon",
         "img": "images/talismans/Godfrey_Icon.png",
         "description": "The Godfrey Icon talisman, featuring an emblem of Godfrey, boosts the power of charged spells."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Magic Scorpion Charm",
         "img": "images/talismans/Magic_Scorpion_Charm.png",
         "description": "The Magic Scorpion Charm is part of a series of talismans that enhance damage for various elements."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Primal Glintstone Blade",
         "img": "images/talismans/Primal_Glintstone_Blade.png",
         "description": "The Primal Glintstone Blade talisman enables players to cast spells more frequently."
@@ -258,19 +258,19 @@ const mageTalismans = [
 
 const arcaneTalismans = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Lord of Blood’s Exultation",
         "img": "images/talismans/Lord_of_Blood_Exultation.png",
         "description": "Lord of Blood’s Exultation is a powerful talisman that boosts attack power by 20% when enemies are affected by blood loss."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Shard of Alexander",
         "img": "images/talismans/Shard_of_Alexander.png",
         "description": "The Shard of Alexander enhances the power of your skills by 15%."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Fire Scorpion Charm",
         "img": "images/talismans/Fire_Scorpion_Charm.png",
         "description": "The Fire Scorpion Charm boosts fire damage by 12%."
@@ -279,19 +279,19 @@ const arcaneTalismans = [
 
 const faithTalismans = [
     {
-        "_id" : "1",
+        "_id" : 1,
         "name": "Two Fingers Heirloom",
         "img": "images/talismans/Two_Fingers_Heirloom.png",
         "description": "The Two Fingers Heirloom talisman increases your faith by 5 levels."
     },
     {
-        "_id" : "2",
+        "_id" : 2,
         "name": "Marika's Soreseal",
         "img": "images/talismans/Marika_Soreseal.png",
         "description": "Marika's Soreseal enhances mind, intelligence, faith, and arcane by +5."
     },
     {
-        "_id" : "3",
+        "_id" : 3,
         "name": "Radagon's Soreseal",
         "img": "images/talismans/Radagon_Soreseal.png",
         "description": "Radagon's Soreseal boosts multiple stats by +5, though it increases damage taken by 15%."
@@ -519,7 +519,7 @@ const handleWepChange = (req, res, weaponType) => {
     }
 
     const item = {
-        _id: _id.toString(),
+        _id: _id,
         name: req.body.name,
         description: req.body.description,
     };
@@ -640,17 +640,42 @@ const handleWepChange = (req, res, weaponType) => {
         const category = req.params.category;
         const type = req.params.type;
         const id = req.params.id;
+        let item;
 
-        console.log("Category: " + category);
-        console.log("Type: " + type);
-        console.log("ID: " + id);
+        if(category===Wepons){
+            if(type === "strength"){
+                const item = strengthWeapons.find(strengthWeapon => strengthWeapon._id === parseInt(id));
+            } else if(type === "dexterity"){
+                const item = dexterityWeapons.find(dexterityWeapon => dexterityWeapon._id === parseInt(id));
+            } else if(type === "mage"){
+                const item = mageWeapons.find(mageWeapon => mageWeapon._id === parseInt(id));
+            } else if(type === "arcane"){
+                const item = arcaneWeapons.find(arcaneWeapon => arcaneWeapon._id === parseInt(id));
+            } else if(type === "faith"){
+                const item = faithWeapons.find(faithWeapon => faithWeapon._id === parseInt(id));
+            }
+        }else if(category===talismans){
+            if(type === "strength"){
+                const item = strengthTalismans.find(strengthTalisman => strengthTalisman._id === parseInt(id));
+            } else if(type === "dexterity"){
+                const item = dexterityTalismans.find(dexterityTalisman => dexterityTalisman._id === parseInt(id));
+            } else if(type === "mage"){
+                const item = mageTalismans.find(mageTalisman => mageTalisman._id === parseInt(id));
+            } else if(type === "arcane"){
+                const item = arcaneTalismans.find(arcaneTalisman => arcaneTalisman._id === parseInt(id));
+            } else if(type === "faith"){
+                const item = faithTalismans.find(faithTalisman => faithTalisman._id === parseInt(id));
+            }
+        }
 
         if(!item){
             res.status(404).send("The item with the given ID was not found");
             return;
         }
 
-
+        const index = category.indexOf(item);
+        category.splice(index, 1);
+        res.status(200).send(item);
     });
 
 const validateItem = (item) => {
