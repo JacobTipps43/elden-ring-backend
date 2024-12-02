@@ -636,6 +636,10 @@ const handleWepChange = (req, res, weaponType) => {
         handleTalismanChange(req, res, "faith");
     });
 
+    app.delete("/api/:category/:type/:id", (req, res) => {
+        console.log("Hello");
+    });
+
 const validateItem = (item) => {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
