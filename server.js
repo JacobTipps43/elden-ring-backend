@@ -637,12 +637,7 @@ const handleWepChange = (req, res, weaponType) => {
     });
 
     app.delete("/api/:category/:type/:id", (req, res) => {
-      if(!item){
-            res.status(404).send("The item with the given ID was not found");
-            return;
-      }
-
-      res.status(200).console.log("Item deleted");
+      console.log("hello");
     });
 
 const validateItem = (item) => {
