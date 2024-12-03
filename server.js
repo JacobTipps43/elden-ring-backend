@@ -637,54 +637,59 @@ const handleWepChange = (req, res, weaponType) => {
     });
 
     app.delete("/api/:category/:type/:id", (req, res) => {
-        const category = req.params.category;
-        const type = req.params.type;
-        const id = req.params.id;
-
-        console.log("Category: "+category);
-        console.log("Type: "+type);
-        console.log("ID: "+id);
-
+        const { category, type, id } = req.params;
+    
+        console.log("Category: " + category);
+        console.log("Type: " + type);
+        console.log("ID: " + id);
+    
+        let itemArray;
         let item;
-
-        if(category==="Wepons"){
-            if(type === "strengthWeapons"){
-                item = strengthWeapons.find(strengthWeapon => strengthWeapon._id === parseInt(id));
-            } else if(type === "dexterityWeapons"){
-                item = dexterityWeapons.find(dexterityWeapon => dexterityWeapon._id === parseInt(id));
-            } else if(type === "mageWeapons"){
-                item = mageWeapons.find(mageWeapon => mageWeapon._id === parseInt(id));
-            } else if(type === "arcaneWeapons"){
-                item = arcaneWeapons.find(arcaneWeapon => arcaneWeapon._id === parseInt(id));
-            } else if(type === "faithWeapons"){
-                item = faithWeapons.find(faithWeapon => faithWeapon._id === parseInt(id));
+    
+        if (category === "Wepons") {
+            if (type === "strengthWeapons") {
+                itemArray = strengthWeapons;
+            } else if (type === "dexterityWeapons") {
+                itemArray = dexterityWeapons;
+            } else if (type === "mageWeapons") {
+                itemArray = mageWeapons;
+            } else if (type === "arcaneWeapons") {
+                itemArray = arcaneWeapons;
+            } else if (type === "faithWeapons") {
+                itemArray = faithWeapons;
             }
-        }else if(category==="talismans"){
-            if(type === "strengthTalismans"){
-                item = strengthTalismans.find(strengthTalisman => strengthTalisman._id === parseInt(id));
-            } else if(type === "dexterityTalismans"){
-                item = dexterityTalismans.find(dexterityTalisman => dexterityTalisman._id === parseInt(id));
-            } else if(type === "mageTalismans"){
-                item = mageTalismans.find(mageTalisman => mageTalisman._id === parseInt(id));
-            } else if(type === "arcaneTalismans"){
-                item = arcaneTalismans.find(arcaneTalisman => arcaneTalisman._id === parseInt(id));
-            } else if(type === "faithTalismans"){
-                item = faithTalismans.find(faithTalisman => faithTalisman._id === parseInt(id));
+        } else if (category === "Talismans") {
+            if (type === "strengthTalismans") {
+                itemArray = strengthTalismans;
+            } else if (type === "dexterityTalismans") {
+                itemArray = dexterityTalismans;
+            } else if (type === "mageTalismans") {
+                itemArray = mageTalismans;
+            } else if (type === "arcaneTalismans") {
+                itemArray = arcaneTalismans;
+            } else if (type === "faithTalismans") {
+                itemArray = faithTalismans;
             }
         }
-
-        console.log("Item: "+item);
-
-        if(!item){
-            res.status(404).send("The item with the given ID was not found");
-            console.log("Item not found");
+    
+        if (!itemArray) {
+            res.status(400).send("Invalid category or type");
             return;
         }
-
-        const index = type.indexOf(item);
-        type.splice(index, 1);
+    
+        item = itemArray.find(el => el._id === parseInt(id));
+        console.log("Item: ", item);
+    
+        if (!item) {
+            res.status(404).send("The item with the given ID was not found");
+            return;
+        }
+    
+        const index = itemArray.indexOf(item);
+        itemArray.splice(index, 1);
         res.status(200).send(item);
     });
+    
 
 const validateItem = (item) => {
     const schema = Joi.object({
