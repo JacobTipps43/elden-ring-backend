@@ -511,13 +511,21 @@ const handleWepChange = (req, res, weaponType) => {
         const newId = lastWeapon ? lastWeapon._id + 1 : 1;
         _id = newId;
     } else if (weaponType === "dexterity") {
-        _id = dexterityWeapons.length + 1;
+        const lastWeapon = dexterityWeapons[dexterityWeapons.length - 1];
+        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
+        _id = newId;
     } else if (weaponType === "mage") {
-        _id = mageWeapons.length + 1;
+        const lastWeapon = mageWeapons[mageWeapons.length - 1];
+        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
+        _id = newId;
     } else if (weaponType === "arcane") {
-        _id = arcaneWeapons.length + 1;
+        const lastWeapon = arcaneWeapons[arcaneWeapons.length - 1];
+        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
+        _id = newId;
     } else if (weaponType === "faith") {
-        _id = faithWeapons.length + 1;
+        const lastWeapon = faithWeapons[faithWeapons.length - 1];
+        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
+        _id = newId;
     }
 
     const item = {
@@ -561,15 +569,25 @@ const handleWepChange = (req, res, weaponType) => {
 
     let _id;
     if (talismanType === "strength") {
-        _id = strengthTalismans.length + 1;
+        const lastTalisman = strengthTalismans[strengthTalismans.length - 1];
+        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
+        _id = newId;
     } else if (talismanType === "dexterity") {
-        _id = dexterityTalismans.length + 1;
+        const lastTalisman = dexterityTalismans[dexterityTalismans.length - 1];
+        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
+        _id = newId;
     } else if (talismanType === "mage") {
-        _id = mageTalismans.length + 1;
+        const lastTalisman = mageTalismans[mageTalismans.length - 1];
+        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
+        _id = newId;
     } else if (talismanType === "arcane") {
-        _id = arcaneTalismans.length + 1;
+        const lastTalisman = arcaneTalismans[arcaneTalismans.length - 1];
+        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
+        _id = newId;
     } else if (talismanType === "faith") {
-        _id = faithTalismans.length + 1;
+        const lastTalisman = faithTalismans[faithTalismans.length - 1];
+        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
+        _id = newId;
     }
   
     const item = { 
@@ -689,6 +707,74 @@ const handleWepChange = (req, res, weaponType) => {
     
         const index = itemArray.indexOf(item);
         itemArray.splice(index, 1);
+        res.status(200).send(item);
+    });
+
+    app.put("/api/:category/:type/:id", (req, res) => {
+        const { category, type, id } = req.params;
+    
+        console.log("Category: " + category);
+        console.log("Type: " + type);
+        console.log("ID: " + id);
+    
+        let itemArray;
+        let item;
+    
+        if (category === "Wepons") {
+            if (type === "strengthWeapons") {
+                itemArray = strengthWeapons;
+            } else if (type === "dexterityWeapons") {
+                itemArray = dexterityWeapons;
+            } else if (type === "mageWeapons") {
+                itemArray = mageWeapons;
+            } else if (type === "arcaneWeapons") {
+                itemArray = arcaneWeapons;
+            } else if (type === "faithWeapons") {
+                itemArray = faithWeapons;
+            }
+        } else if (category === "Talismans") {
+            if (type === "strengthTalismans") {
+                itemArray = strengthTalismans;
+            } else if (type === "dexterityTalismans") {
+                itemArray = dexterityTalismans;
+            } else if (type === "mageTalismans") {
+                itemArray = mageTalismans;
+            } else if (type === "arcaneTalismans") {
+                itemArray = arcaneTalismans;
+            } else if (type === "faithTalismans") {
+                itemArray = faithTalismans;
+            }
+        }
+    
+        if (!itemArray) {
+            res.status(400).send("Invalid category or type");
+            return;
+        }
+    
+        item = itemArray.find(el => el._id === parseInt(id));
+        console.log("Item: ", item);
+    
+        if (!item) {
+            res.status(404).send("The item with the given ID was not found");
+            return;
+        }
+    
+        const results = validateItem(req.body);
+    
+        if (results.error) {
+            res.status(400).send(results.error.details[0].message);
+            console.log("I have an error");
+            console.log(results.error);
+            return;
+        }
+    
+        item.name = req.body.name;
+        item.description = req.body.description;
+    
+        if (req.file) {
+            item.img = "images/Weapons/" + req.file.filename;
+        }
+    
         res.status(200).send(item);
     });
     
