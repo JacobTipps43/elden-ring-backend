@@ -710,12 +710,13 @@ const handleWepChange = (req, res, weaponType) => {
         res.status(200).send(item);
     });
 
-    app.put("/api/:category/:type/:id", (req, res) => {
+    app.put("/api/:category/:type/:id", uploadWeps.single("img"),(req, res) => {
         const { category, type, id } = req.params;
     
-        console.log("Category: " + category);
-        console.log("Type: " + type);
-        console.log("ID: " + id);
+        console.log("Category:", category);
+        console.log("Type:", type);
+        console.log("ID:", id);
+        console.log("Request Body:", req.body);
     
         let itemArray;
         let item;
@@ -746,10 +747,17 @@ const handleWepChange = (req, res, weaponType) => {
             }
         }
     
+        if (!itemArray) {
+            console.log("Invalid category or type");
+            res.status(404).send("The specified category or type does not exist");
+            return;
+        }
+    
         item = itemArray.find(el => el._id === parseInt(id));
-        console.log("Item: ", item);
+        console.log("Item:", item);
     
         if (!item) {
+            console.log("Item not found");
             res.status(404).send("The item with the given ID was not found");
             return;
         }
@@ -758,8 +766,13 @@ const handleWepChange = (req, res, weaponType) => {
     
         if (results.error) {
             res.status(400).send(results.error.details[0].message);
-            console.log("I have an error");
-            console.log(results.error);
+            console.log("Validation Error:", results.error);
+            return;
+        }
+    
+        if (!req.body.name || !req.body.description) {
+            console.log("Missing 'name' or 'description' in the request body");
+            res.status(400).send("Missing 'name' or 'description' in the request body");
             return;
         }
     
