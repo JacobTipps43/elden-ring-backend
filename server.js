@@ -518,27 +518,6 @@ const handleWepChange = (req, res, weaponType) => {
         _id = faithWeapons.length + 1;
     }
 
-    const addNewItem = (array, newItem) => {
-        // Step 1: Extract all existing IDs from the array
-        const existingIds = array.map(item => item._id);
-    
-        // Step 2: Start with the new item's ID
-        let newId = newItem._id;
-    
-        // Step 3: Increment the ID until it's unique
-        while (existingIds.includes(newId)) {
-            newId++;
-        }
-    
-        // Step 4: Assign the unique ID to the new item
-        newItem._id = newId;
-    
-        // Step 5: Add the new item to the array
-        array.push(newItem);
-    
-        return array;
-    };
-
     const item = {
         _id: _id,
         name: req.body.name,
