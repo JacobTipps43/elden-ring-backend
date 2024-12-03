@@ -507,7 +507,9 @@ const handleWepChange = (req, res, weaponType) => {
   
     let _id;
     if (weaponType === "strength") {
-        _id = strengthWeapons.length + 1;
+        const lastWeapon = strengthWeapons[strengthWeapons.length - 1];
+        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
+        _id = newId;
     } else if (weaponType === "dexterity") {
         _id = dexterityWeapons.length + 1;
     } else if (weaponType === "mage") {
