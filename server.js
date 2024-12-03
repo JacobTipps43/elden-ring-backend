@@ -746,11 +746,6 @@ const handleWepChange = (req, res, weaponType) => {
             }
         }
     
-        if (!itemArray) {
-            res.status(400).send("Invalid category or type");
-            return;
-        }
-    
         item = itemArray.find(el => el._id === parseInt(id));
         console.log("Item: ", item);
     
