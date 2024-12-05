@@ -209,8 +209,8 @@ const faithLocations =[
 ]
 
 app.get('/api/Wepons/strengthWeapons', (req, res) => {
-    const items = strengthWepsItem.find();
-    res.send(items);
+    const items = strengthWepsItem.find().lean();
+    res.json(items);
 });
 
 app.get('/api/Wepons/dexterityWeapons', (req, res) => {
@@ -310,65 +310,45 @@ app.get('/api/locations', (req, res) => {
 
 const handleWepChange = async (req, res, weaponType) => {
     console.log("Handling the request");
-  
+
     const results = validateItem(req.body);
-  
+
     if (results.error) {
-      res.status(400).send(results.error.details[0].message);
-      console.log("I have an error");
-      console.log(results.error);
-      return;
-    }
-  
-    let _id;
-    if (weaponType === "strength") {
-        const lastWeapon = strengthWeapons[strengthWeapons.length - 1];
-        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
-        _id = newId;
-    } else if (weaponType === "dexterity") {
-        const lastWeapon = dexterityWeapons[dexterityWeapons.length - 1];
-        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
-        _id = newId;
-    } else if (weaponType === "mage") {
-        const lastWeapon = mageWeapons[mageWeapons.length - 1];
-        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
-        _id = newId;
-    } else if (weaponType === "arcane") {
-        const lastWeapon = arcaneWeapons[arcaneWeapons.length - 1];
-        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
-        _id = newId;
-    } else if (weaponType === "faith") {
-        const lastWeapon = faithWeapons[faithWeapons.length - 1];
-        const newId = lastWeapon ? lastWeapon._id + 1 : 1;
-        _id = newId;
+        res.status(400).send(results.error.details[0].message);
+        console.log("Validation error:", results.error);
+        return;
     }
 
     const item = {
-        _id: _id,
         name: req.body.name,
         description: req.body.description,
     };
-  
+
     if (req.file) {
-      item.img = "images/Weapons/" + req.file.filename;
+        item.img = "images/Weapons/" + req.file.filename;
     }
 
-    if (weaponType === "strength") {
-        strengthWeapons.push(item);
-      } else if (weaponType === "dexterity") {
-        dexterityWeapons.push(item);
-      } else if (weaponType === "mage") {
-        mageWeapons.push(item);
-      } else if (weaponType === "arcane") {
-        arcaneWeapons.push(item);
-      } else if (weaponType === "faith") {
-        faithWeapons.push(item);
-      }
-  
-    const newItem = await item.save();
-    console.log(newItem);
-    res.status(200).send(newItem);
-  };
+    try {
+        let newItem;
+        if (weaponType === "strength") {
+            newItem = new strengthWepsItem(item);
+        } else if (weaponType === "dexterity") {
+            newItem = new dexterityWepsItem(item);
+        } else if (weaponType === "mage") {
+            newItem = new mageWepsItem(item);
+        } else if (weaponType === "arcane") {
+            newItem = new arcaneWepsItem(item);
+        } else if (weaponType === "faith") {
+            newItem = new faithWepsItem(item);
+        }
+
+        await newItem.save(); // Save to the database
+        res.status(200).send(newItem);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error saving weapon data");
+    }
+};
 
   const handleTalismanChange = async (req, res, talismanType) => {
     console.log("Handling the request");
