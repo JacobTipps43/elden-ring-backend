@@ -210,7 +210,8 @@ const faithLocations =[
 
 app.get('/api/Wepons/strengthWeapons', (req, res) => {
     const items = strengthWepsItem.find().lean();
-    res.json(items);
+    console.log(items);
+    res.send(items);
 });
 
 app.get('/api/Wepons/dexterityWeapons', (req, res) => {
