@@ -208,54 +208,63 @@ const faithLocations =[
     }
 ]
 
-app.get('/api/Wepons/strengthWeapons', (req, res) => {
-    const items = strengthWepsItem.find().lean();
+app.get('/api/Wepons/strengthWeapons', async (req, res) => {
+    const items = await strengthWepsItem.find();
     console.log(items);
     res.send(items);
 });
 
-app.get('/api/Wepons/dexterityWeapons', (req, res) => {
-    const items = dexterityWepsItem.find();
+app.get('/api/Wepons/dexterityWeapons', async (req, res) => {
+    const items = await dexterityWepsItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/Wepons/mageWeapons', (req, res) => {
-    const items = mageWepsItem.find();
+app.get('/api/Wepons/mageWeapons', async (req, res) => {
+    const items = await mageWepsItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/Wepons/arcaneWeapons', (req, res) => {
-    const items = arcaneWepsItem.find();
+app.get('/api/Wepons/arcaneWeapons', async (req, res) => {
+    const items = await arcaneWepsItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/Wepons/faithWeapons', (req, res) => {
-    const items = faithWepsItem.find();
+app.get('/api/Wepons/faithWeapons', async (req, res) => {
+    const items = await faithWepsItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/talismans/strengthTalismans', (req, res) => {
-    const items = strengthTalisItem.find();
+app.get('/api/talismans/strengthTalismans', async (req, res) => {
+    const items = await strengthTalisItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/talismans/dexterityTalismans', (req, res) => {
-    const items = dexterityTalisItem.find();
+app.get('/api/talismans/dexterityTalismans', async (req, res) => {
+    const items = await dexterityTalisItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/talismans/mageTalismans', (req, res) => {
-    const items = mageTalisItem.find();
+app.get('/api/talismans/mageTalismans', async (req, res) => {
+    const items = await mageTalisItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/talismans/arcaneTalismans', (req, res) => {
-    const items = arcaneTalisItem.find();
+app.get('/api/talismans/arcaneTalismans', async (req, res) => {
+    const items = await arcaneTalisItem.find();
+    console.log(items);
     res.send(items);
 });
 
-app.get('/api/talismans/faithTalismans', (req, res) => {
-    const items = faithTalisItem.find();
+app.get('/api/talismans/faithTalismans', async (req, res) => {
+    const items = await faithTalisItem.find();
+    console.log(items);
     res.send(items);
 });
 
@@ -343,7 +352,7 @@ const handleWepChange = async (req, res, weaponType) => {
             newItem = new faithWepsItem(item);
         }
 
-        await newItem.save(); // Save to the database
+        await newItem.save();
         res.status(200).send(newItem);
     } catch (err) {
         console.error(err);
@@ -351,68 +360,47 @@ const handleWepChange = async (req, res, weaponType) => {
     }
 };
 
-  const handleTalismanChange = async (req, res, talismanType) => {
+const handleTalismanChange = async (req, res, talismanType) => {
     console.log("Handling the request");
-  
+
     const results = validateItem(req.body);
-  
+
     if (results.error) {
-      res.status(400).send(results.error.details[0].message);
-      console.log("I have an error");
-      console.log(results.error);
-      return;
+        res.status(400).send(results.error.details[0].message);
+        console.log("Validation error:", results.error);
+        return;
     }
 
-
-    let _id;
-    if (talismanType === "strength") {
-        const lastTalisman = strengthTalismans[strengthTalismans.length - 1];
-        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
-        _id = newId;
-    } else if (talismanType === "dexterity") {
-        const lastTalisman = dexterityTalismans[dexterityTalismans.length - 1];
-        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
-        _id = newId;
-    } else if (talismanType === "mage") {
-        const lastTalisman = mageTalismans[mageTalismans.length - 1];
-        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
-        _id = newId;
-    } else if (talismanType === "arcane") {
-        const lastTalisman = arcaneTalismans[arcaneTalismans.length - 1];
-        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
-        _id = newId;
-    } else if (talismanType === "faith") {
-        const lastTalisman = faithTalismans[faithTalismans.length - 1];
-        const newId = lastTalisman ? lastTalisman._id + 1 : 1;
-        _id = newId;
-    }
-  
-    const item = { 
-      _id: _id,
-      name: req.body.name,
-      description: req.body.description,
+    const item = {
+        name: req.body.name,
+        description: req.body.description,
     };
-  
+
     if (req.file) {
-      item.img = "images/talismans/" + req.file.filename;
+        item.img = "images/talismans/" + req.file.filename;
     }
 
-    if (talismanType === "strength") {
-        strengthTalismans.push(item);
-      } else if (talismanType === "dexterity") {
-        dexterityTalismans.push(item);
-      } else if (talismanType === "mage") {
-        mageTalismans.push(item);
-      } else if (talismanType === "arcane") {
-        arcaneTalismans.push(item);
-      } else if (talismanType === "faith") {
-        faithTalismans.push(item);
-      }
-  
-    const newItem = await item.save();
-    console.log(newItem);
-    res.status(200).send(newItem);
-  }
+    try {
+        let newItem;
+        if (talismanType === "strength") {
+            newItem = new strengthTalisItem(item);
+        } else if (talismanType === "dexterity") {
+            newItem = new dexterityTalisItem(item);
+        } else if (talismanType === "mage") {
+            newItem = new mageTalisItem(item);
+        } else if (talismanType === "arcane") {
+            newItem = new arcaneTalisItem(item);
+        } else if (talismanType === "faith") {
+            newItem = new faithTalisItem(item);
+        }
+
+        await newItem.save();
+        res.status(200).send(newItem);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error saving talisman data");
+    }
+};
   
   app.post("/api/Wepons/strengthWeapons", uploadWeps.single("img"), (req, res) => {
         handleWepChange(req, res, "strength");
@@ -454,136 +442,121 @@ const handleWepChange = async (req, res, weaponType) => {
         handleTalismanChange(req, res, "faith");
     });
 
-    app.delete("/api/:category/:type/:id", (req, res) => {
+    app.delete("/api/:category/:type/:id", async (req, res) => {
         const { category, type, id } = req.params;
     
-        console.log("Category: " + category);
-        console.log("Type: " + type);
-        console.log("ID: " + id);
-    
-        let itemArray;
-        let item;
+        let Model;
     
         if (category === "Wepons") {
             if (type === "strengthWeapons") {
-                itemArray = strengthWeapons;
+                Model = strengthWepsItem;
             } else if (type === "dexterityWeapons") {
-                itemArray = dexterityWeapons;
+                Model = dexterityWepsItem;
             } else if (type === "mageWeapons") {
-                itemArray = mageWeapons;
+                Model = mageWepsItem;
             } else if (type === "arcaneWeapons") {
-                itemArray = arcaneWeapons;
+                Model = arcaneWepsItem;
             } else if (type === "faithWeapons") {
-                itemArray = faithWeapons;
+                Model = faithWepsItem;
             }
-        } else if (category === "Talismans") {
+        } else if (category === "talismans") {
             if (type === "strengthTalismans") {
-                itemArray = strengthTalismans;
+                Model = strengthTalisItem;
             } else if (type === "dexterityTalismans") {
-                itemArray = dexterityTalismans;
+                Model = dexterityTalisItem;
             } else if (type === "mageTalismans") {
-                itemArray = mageTalismans;
+                Model = mageTalisItem;
             } else if (type === "arcaneTalismans") {
-                itemArray = arcaneTalismans;
+                Model = arcaneTalisItem;
             } else if (type === "faithTalismans") {
-                itemArray = faithTalismans;
+                Model = faithTalisItem;
             }
         }
     
-        if (!itemArray) {
-            res.status(400).send("Invalid category or type");
-            return;
+        if (!Model) {
+            return res.status(400).send("Invalid category or type");
         }
     
-        item = itemArray.find(el => el._id === parseInt(id));
-        console.log("Item: ", item);
-    
-        if (!item) {
-            res.status(404).send("The item with the given ID was not found");
-            return;
+        try {
+            const item = await Model.findByIdAndDelete(id);
+            if (!item) {
+                return res.status(404).send("Item not found");
+            }
+            res.status(200).send(item);
+        } catch (err) {
+            console.error(err);
+            res.status(500).send("Error deleting the item");
         }
-    
-        const index = itemArray.indexOf(item);
-        itemArray.splice(index, 1);
-        res.status(200).send(item);
     });
+    
 
-    app.put("/api/:category/:type/:id", uploadWeps.single("img"),(req, res) => {
+    app.put("/api/:category/:type/:id", uploadWeps.single("img"), async (req, res) => {
         const { category, type, id } = req.params;
     
-        console.log("Category:", category);
-        console.log("Type:", type);
-        console.log("ID:", id);
-        console.log("Request Body:", req.body);
-    
-        let itemArray;
-        let item;
+        let Model;
     
         if (category === "Wepons") {
             if (type === "strengthWeapons") {
-                itemArray = strengthWeapons;
+                Model = strengthWepsItem;
             } else if (type === "dexterityWeapons") {
-                itemArray = dexterityWeapons;
+                Model = dexterityWepsItem;
             } else if (type === "mageWeapons") {
-                itemArray = mageWeapons;
+                Model = mageWepsItem;
             } else if (type === "arcaneWeapons") {
-                itemArray = arcaneWeapons;
+                Model = arcaneWepsItem;
             } else if (type === "faithWeapons") {
-                itemArray = faithWeapons;
+                Model = faithWepsItem;
             }
-        } else if (category === "Talismans") {
+        } else if (category === "talismans") {
             if (type === "strengthTalismans") {
-                itemArray = strengthTalismans;
+                Model = strengthTalisItem;
             } else if (type === "dexterityTalismans") {
-                itemArray = dexterityTalismans;
+                Model = dexterityTalisItem;
             } else if (type === "mageTalismans") {
-                itemArray = mageTalismans;
+                Model = mageTalisItem;
             } else if (type === "arcaneTalismans") {
-                itemArray = arcaneTalismans;
+                Model = arcaneTalisItem;
             } else if (type === "faithTalismans") {
-                itemArray = faithTalismans;
+                Model = faithTalisItem;
             }
         }
     
-        if (!itemArray) {
-            console.log("Invalid category or type");
-            res.status(404).send("The specified category or type does not exist");
-            return;
-        }
-    
-        item = itemArray.find(el => el._id === parseInt(id));
-        console.log("Item:", item);
-    
-        if (!item) {
-            console.log("Item not found");
-            res.status(404).send("The item with the given ID was not found");
-            return;
+        if (!Model) {
+            return res.status(400).send("Invalid category or type");
         }
     
         const results = validateItem(req.body);
-    
         if (results.error) {
-            res.status(400).send(results.error.details[0].message);
-            console.log("Validation Error:", results.error);
-            return;
+            return res.status(400).send(results.error.details[0].message);
         }
     
-        if (!req.body.name || !req.body.description) {
-            console.log("Missing 'name' or 'description' in the request body");
-            res.status(400).send("Missing 'name' or 'description' in the request body");
-            return;
-        }
-    
-        item.name = req.body.name;
-        item.description = req.body.description;
-    
+        const updateData = {
+            name: req.body.name,
+            description: req.body.description,
+        };
+          
         if (req.file) {
-            item.img = "images/Weapons/" + req.file.filename;
+            updateData.img =
+                category === "Wepons"
+                    ? "images/Weapons/" + req.file.filename
+                    : "images/talismans/" + req.file.filename;
         }
     
-        res.status(200).send(item);
-    });
+        try {
+            const updatedItem = await Model.findByIdAndUpdate(id, updateData, {
+                new: true,
+            });
     
+            if (!updatedItem) {
+                return res.status(404).send("Item not found");
+            }
+    
+            res.status(200).send(updatedItem);
+        } catch (err) {
+            console.error(err);
+            res.status(500).send("Error updating the item");
+        }
+    });    
 
 const validateItem = (item) => {
     const schema = Joi.object({
